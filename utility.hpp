@@ -42,4 +42,15 @@ struct Trade {
   std::string asset;
   int amount;
   int price;
+     friend std::ostream &operator<<(std::ostream &oss, const Trade &ord){
+     oss << ord.buyer_username << " Bought " << ord.amount  << " of " << ord.asset << " From " << ord.seller_username << " for " << ord.price << " USD\n";
+  
+    
+    return oss;
+  }
+    friend bool operator==(Trade& compare1, Trade& compare2){
+    return ((compare1.buyer_username == compare2.buyer_username) && (compare1.seller_username == compare2.seller_username)
+        && (compare1.asset == compare2.asset) && ( compare1.amount == compare2.amount)
+        && (compare1.price == compare2.price));    
+}
 };
